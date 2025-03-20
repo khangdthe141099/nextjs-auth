@@ -5,6 +5,7 @@ import { cookies } from 'next/headers'
 export async function POST(request: Request) {
   const res = await request.json()
   const force = res.force as boolean | undefined
+  //Chạy khi sessionToken hết hạn:
   if (force) {
     return Response.json(
       {
@@ -19,6 +20,8 @@ export async function POST(request: Request) {
       }
     )
   }
+
+  //Chạy khi bấm logout button:
   const cookieStore = cookies()
   const sessionToken = cookieStore.get('sessionToken')
   if (!sessionToken) {

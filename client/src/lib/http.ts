@@ -150,6 +150,7 @@ const request = async <Response>(
     }
   }
   // Đảm bảo logic dưới đây chỉ chạy ở phía client (browser)
+  // Set luôn mỗi khi login hoặc register thành công: 
   if (typeof window !== 'undefined') {
     if (
       ['auth/login', 'auth/register'].some(

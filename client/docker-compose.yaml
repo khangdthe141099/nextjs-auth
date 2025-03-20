@@ -1,0 +1,10 @@
+services:
+  nestjs-free:
+    image: nextjs-free
+    command: yarn dev
+    env_file:
+      - ./.env
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app

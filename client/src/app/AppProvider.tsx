@@ -9,6 +9,8 @@ export default function AppProvider({
   children: React.ReactNode
   inititalSessionToken?: string
 }) {
+  //get cookies từ trình duyệt bằng cookies của nextjs và set lại cho clientSessionToken
+  //mỗi lần reload trang
   useState(() => {
     if (typeof window !== 'undefined') {
       clientSessionToken.value = inititalSessionToken

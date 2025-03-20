@@ -43,6 +43,7 @@ export const registerController = async (body: RegisterBodyType) => {
     throw error
   }
 }
+
 export const logoutController = async (sessionToken: string) => {
   await prisma.session.delete({
     where: {
@@ -71,6 +72,7 @@ export const refreshSessionController = async (sessionToken: string) => {
   })
   return newSession
 }
+
 export const loginController = async (body: LoginBodyType) => {
   const account = await prisma.account.findUnique({
     where: {
