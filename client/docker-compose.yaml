@@ -1,5 +1,5 @@
 services:
-  nestjs-free:
+  nextjs-free:
     image: nextjs-free
     command: yarn dev
     env_file:
@@ -8,3 +8,22 @@ services:
       - '3000:3000'
     volumes:
       - .:/app
+    networks:
+      - app-network
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx-server
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - nextjs-free
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
